@@ -1,0 +1,20 @@
+Bootstrap: docker
+From: ros:humble-ros-base-jammy
+
+%setup
+  if [ ! -d "ros2_ws" ]; then
+    mkdir -p ros2_ws/src
+    vcs import ros2_ws/src < ros2ws_vcs 
+  fi
+
+%post
+  apt update && apt upgrade -y
+
+  apt install lsb-release gnupg curl -y
+  curl https://packages.osrfoundation.org/gazebo.gpg --output /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
+  apt-get update
+
+  #apt-get install ignition-fortress ros_gzharmonic_bridge -y
+  apt-get install ros-humble-ros-gz -y
+  #apt-get install ignition-harmonic ros_gzharmonic_bridge -y
