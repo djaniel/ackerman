@@ -1,9 +1,0 @@
-repositories:
-  wayp_plan_tools:
-    type: git
-    url: https://github.com/jkk-research/wayp_plan_tools
-    version: ros2
-  sim_wayp_plan_tools:
-    type: git
-    url: https://github.com/jkk-research/sim_wayp_plan_tools
-    version: ros2

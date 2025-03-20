@@ -23,3 +23,5 @@ source ~/ros2_ws/install/local_setup.bash
 ```
 ros2 launch sim_wayp_plan_tools gazebo_bridge.launch.py
 ```
+
+Link to more [gazebo worlds](https://app.gazebosim.org/dashboard)

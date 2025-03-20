@@ -1,11 +1,20 @@
 Bootstrap: docker
 From: ros:humble-ros-base-jammy
 
+%labels
+    Author Daniel SG
+    Version v1.0
+    Description simulation of a robot in stadium
+
 %setup
   if [ ! -d "ros2_ws" ]; then
     mkdir -p ros2_ws/src
-    vcs import ros2_ws/src < ros2ws_vcs 
+    vcs import ros2_ws/src < ros2ws.repos
   fi
+
+%environment
+  export IGN_GAZEBO_RESOURCE_PATH="/usr/share/ignition/ignition-gazebo6/worlds"
+  export GZ_SIM_RESOURCE_PATH="/usr/share/ignition/ignition-gazebo6/worlds"
 
 %post
   apt update && apt upgrade -y
@@ -16,5 +25,8 @@ From: ros:humble-ros-base-jammy
   apt-get update
 
   #apt-get install ignition-fortress ros_gzharmonic_bridge -y
-  apt-get install ros-humble-ros-gz -y
   #apt-get install ignition-harmonic ros_gzharmonic_bridge -y
+  apt-get install ros-humble-ros-gz -y
+
+  echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc
+
