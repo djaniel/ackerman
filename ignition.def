@@ -9,7 +9,7 @@ From: ros:humble-ros-base-jammy
 %setup
   if [ ! -d "ros2_ws" ]; then
     mkdir -p ros2_ws/src
-    vcs import ros2_ws/src < ros2ws.repos
+    vcs import ros2_ws/src < wsRos2.repos
   fi
 
 %environment
@@ -26,7 +26,7 @@ From: ros:humble-ros-base-jammy
 
   #apt-get install ignition-fortress ros_gzharmonic_bridge -y
   #apt-get install ignition-harmonic ros_gzharmonic_bridge -y
-  apt-get install ros-humble-ros-gz -y
+  apt-get install ros-humble-ros-gz ros-humble-rqt* -y
 
   echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc
 
