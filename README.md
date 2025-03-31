@@ -1,6 +1,8 @@
 # Ackermann Ignition 
 
-This a simulation scenario of a car-like vehicle.
+This is a simulation scenario of a car-like vehicle.
+
+[TOC]
 
 ## Set up the apptainer image
 
@@ -26,6 +28,6 @@ ros2 launch stadium stadium_world.launch.py
 ros2 launch sim_wayp_plan_tools gazebo_bridge.launch.py
 ```
 
-# References
-- The story behind the (launch files](https://github.com/gazebosim/ros_gz/tree/humble/ros_gz_sim)
+## References
+- The story behind the [launch files](https://github.com/gazebosim/ros_gz/tree/humble/ros_gz_sim)
 - Link to more [gazebo worlds](https://app.gazebosim.org/dashboard)

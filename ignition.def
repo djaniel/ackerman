@@ -24,8 +24,6 @@ From: ros:humble-ros-base-jammy
   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
   apt-get update
 
-  #apt-get install ignition-fortress ros_gzharmonic_bridge -y
-  #apt-get install ignition-harmonic ros_gzharmonic_bridge -y
   apt-get install ros-humble-ros-gz ros-humble-rqt* -y
 
   echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc
