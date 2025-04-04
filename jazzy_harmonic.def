@@ -1,0 +1,41 @@
+Bootstrap: docker
+From: ros:jazzy-ros-base-noble
+
+%labels
+    Author Daniel SG
+    Version v1.0
+    Description simulation of a robot in stadium
+
+%setup
+  if [ ! -d "ros2_ws" ]; then
+    mkdir -p ros2_ws/src
+    vcs import ros2_ws/src < wsRos2.repos
+  fi
+
+%post
+  apt update && apt upgrade -y
+  
+
+  apt install ros-jazzy-ros-gz* ros-dev-tools ros-jazzy-desktop-full ros-jazzy-simulation ros-jazzy-rmf-dev -y
+  apt install ros-jazzy-navigation2 ros-jazzy-nav2-bringup ros-jazzy-nav2-minimal-tb* ros-jazzy-slam-toolbox -y
+  apt install ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-rqt* -y
+
+  
+  rosdep update --rosdistro jazzy
+
+  rosdep install -r --from-paths ros2_ws/src -i -y --rosdistro jazzy
+
+  colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+  colcon mixin update default
+
+  
+  echo "source /opt/ros/jazzy/setup.bash" >> /etc/bash.bashrc
+
+%environment
+  export DEBIAN_FRONTEND=noninteractive
+  export LANG=en_US.UTF-8
+  export RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+  export ROS_DISTRO=jazzy
+  export GZ_VERSION=harmonic
+  export HOME=/home/apptainer
+
