@@ -19,14 +19,15 @@ From: ros:jazzy-ros-base-noble
   apt install ros-jazzy-ros-gz* ros-dev-tools ros-jazzy-desktop-full ros-jazzy-simulation ros-jazzy-rmf-dev -y
   apt install ros-jazzy-navigation2 ros-jazzy-nav2-bringup ros-jazzy-nav2-minimal-tb* ros-jazzy-slam-toolbox -y
   apt install ros-jazzy-ros2-control ros-jazzy-ros2-controllers ros-jazzy-rqt* -y
+  apt install ros-jazzy-rviz* -y
 
   
   rosdep update --rosdistro jazzy
 
-  rosdep install -r --from-paths ros2_ws/src -i -y --rosdistro jazzy
+  #rosdep install -r --from-paths ros2_ws/src -i -y --rosdistro jazzy
 
-  colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
-  colcon mixin update default
+  #colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml
+  #colcon mixin update default
 
   
   echo "source /opt/ros/jazzy/setup.bash" >> /etc/bash.bashrc
